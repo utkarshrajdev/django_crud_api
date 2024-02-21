@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.urls import include, path
-from .views import CreateBook,RetrieveUpdateDestroyBook
+from .views import book, book_detail
 
 urlpatterns = [
-    path('book/', CreateBook.as_view(),name="create_book"),
-    path('book/<int:pk>/',RetrieveUpdateDestroyBook.as_view(),name="retrieve_update_destroy_book"),
+    path('book/', book),
+    path('book/<int:id>', book_detail),
 ]
