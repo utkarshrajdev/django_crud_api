@@ -1,8 +1,8 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import BookSerializer
-from .models import Book
-from rest_framework import status
+from .serializers import BookSerializer, ReviewSerializer
+from .models import Book, Review
+from rest_framework import status, viewsets
 # Create your views here.
 
 @api_view(['GET','POST'])
@@ -49,3 +49,8 @@ def book_detail(request, id):
     if request.method == 'DELETE':
         book.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class ReviewViewSet(viewsets.ModelViewSet):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
